@@ -35,7 +35,7 @@ import rospkg
 
 from python_qt_binding import loadUi
 from python_qt_binding.QtCore import Qt, QUrl
-from python_qt_binding.QtGui import QIcon
+from python_qt_binding.QtGui import QIcon, QPixmap
 try:
     # Qt 5.6 and higher
     from python_qt_binding.QtWebEngine import QWebEnginePage as QWebPage
@@ -73,9 +73,9 @@ class WebWidget(QWidget):
         self.setObjectName('WebWidget')
 
         self._loading = False
-        self._stop_icon = QIcon.fromTheme('process-stop')
-        self._reload_icon = QIcon.fromTheme('view-refresh')
-        self._working_icon = QIcon.fromTheme('process-working')
+        self._stop_icon = QIcon.fromTheme('process-stop', QIcon(QPixmap(os.path.join(rp.get_path('rqt_gui'), 'resource/icons/process-stop.png'))))
+        self._reload_icon = QIcon.fromTheme('view-refresh', QIcon(QPixmap(os.path.join(rp.get_path('rqt_gui'), 'resource/icons/view-refresh.png'))))
+        self._working_icon = QIcon.fromTheme('process-working', QIcon(QPixmap(os.path.join(rp.get_path('rqt_gui'), 'resource/icons/process-working.png'))))
 
         self._completer_word_list = ['']
         self._view = QWebView()
